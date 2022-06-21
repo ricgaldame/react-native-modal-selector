@@ -4,13 +4,14 @@ module.exports = {
     es6: true,
     node: true,
   },
-  plugins: ["babel", "import", "react", "react-native", "jsx-a11y"],
+  plugins: ["babel", "import", "react", "react-native", "jsx-a11y", "prettier"],
   extends: [
     "plugin:react/recommended",
     "eslint:recommended",
     "plugin:react-native/all",
     "plugin:jsx-a11y/recommended",
     "plugin:import/recommended",
+    "plugin:prettier/recommended",
   ],
   parserOptions: {
     ecmaVersion: 9,
@@ -33,6 +34,7 @@ module.exports = {
     },
   },
   rules: {
+    "prettier/prettier": "error",
     "react-native/no-color-literals": 0,
     "react-native/sort-styles": 0,
     "react-native/no-inline-styles": 1,
