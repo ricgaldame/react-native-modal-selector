@@ -18,12 +18,14 @@ import styles from './style';
 let componentIndex = 0;
 
 const propTypes = {
+    children:                       PropTypes.oneOfType([ PropTypes.arrayOf(PropTypes.node), PropTypes.node, ]),
     data:                           PropTypes.array,
     onChange:                       PropTypes.func,
     onModalOpen:                    PropTypes.func,
     onModalClose:                   PropTypes.func,
     keyExtractor:                   PropTypes.func,
     labelExtractor:                 PropTypes.func,
+    componentExtractor:             PropTypes.func,
     visible:                        PropTypes.bool,
     closeOnChange:                  PropTypes.bool,
     initValue:                      PropTypes.string,
@@ -147,7 +149,7 @@ export default class ModalSelector extends React.Component {
         };
     }
 
-    componentDidUpdate(prevProps, prevState) {
+    componentDidUpdate(prevProps) {
         let newState = {};
         let doUpdate = false;
         if (prevProps.initValue !== this.props.initValue) {
@@ -254,7 +256,7 @@ export default class ModalSelector extends React.Component {
             </TouchableOpacity>);
     }
 
-    renderFlatlistOption = ({ item, index, separators }) => {
+    renderFlatlistOption = ({ item, index, /*separators*/ }) => {
         if (item.section) {
             return this.renderSection(item);
         }
